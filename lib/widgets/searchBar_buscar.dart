@@ -24,9 +24,13 @@ class SearchBar extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: GestureDetector(
           onTap: () async {
+            final proximidad =
+                BlocProvider.of<MiUbicacionBloc>(context).state.ubicacion;
+            final historial =
+                BlocProvider.of<BusquedaBloc>(context).state.historial;
             final resultado = await showSearch(
               context: context,
-              delegate: SearchDestination(),
+              delegate: SearchDestination(proximidad!, historial),
             );
             this.retornoBusqueda(resultado!, context);
           },
@@ -57,12 +61,39 @@ class SearchBar extends StatelessWidget {
     );
   }
 
-  void retornoBusqueda(SearchResult result, BuildContext context) {
+  void retornoBusqueda(SearchResult result, BuildContext context) async {
     if (result.cancelo) return;
+    final busquedaBloc = BlocProvider.of<BusquedaBloc>(context);
+    final mapaBloc = BlocProvider.of<MapaBloc>(context);
 
     if (!result.manual) {
-      BlocProvider.of<BusquedaBloc>(context).add(OnActivarManual());
+      busquedaBloc.add(OnActivarManual());
       return;
     }
+
+    calculandoAlerta(context);
+
+    //calculo ruta de busqueda
+    final trafficService = new TrafficService();
+    final inicio = BlocProvider.of<MiUbicacionBloc>(context).state.ubicacion!;
+    final destino = result.position!;
+    final drivingResponse =
+        await trafficService.getCoordsInicioYDestino(inicio, destino);
+    final geometry = drivingResponse.routes[0].geometry;
+    final duracion = drivingResponse.routes[0].duration;
+    final distancia = drivingResponse.routes[0].distance;
+
+    final points = Poly.Polyline.Decode(encodedString: geometry, precision: 6);
+    final List<LatLng> rutaCoordenadas = points.decodedCoords
+        .map((point) => LatLng(point[0], point[1]))
+        .toList();
+
+    mapaBloc
+        .add(OnCrearRutaIniciodestino(rutaCoordenadas, distancia, duracion));
+
+    Navigator.of(context).pop();
+
+    //actaulizar historial
+    busquedaBloc.add(OnAgregarHistorial(result));
   }
 }
