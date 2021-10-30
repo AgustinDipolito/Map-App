@@ -119,9 +119,10 @@ class MapaBloc extends Bloc<MapaEvent, MapaState> {
       position: event.rutaCoordenadas[0],
       icon: iconIncio,
       anchor: Offset(0, 1),
-      infoWindow: InfoWindow(
-          title: "Mi ubicacion",
-          snippet: "Tiempo estimado: ${(event.duracion / 60).floor()} Mins."),
+      //infoWindow reemplazado por customMarkers
+      // infoWindow: InfoWindow(
+      //   title: "Mi ubicacion",
+      // snippet: "Tiempo estimado: ${(event.duracion / 60).floor()} Mins."),
     );
 
     double kilometros = (event.distancia / 1000);
@@ -129,14 +130,11 @@ class MapaBloc extends Bloc<MapaEvent, MapaState> {
     kilometros = (kilometros / 100);
 
     final markerFinal = new Marker(
-        markerId: MarkerId("final"),
-        position: event.rutaCoordenadas.last,
-        icon: markerDestino,
-        anchor: Offset(0, 1),
-        infoWindow: InfoWindow(
-          title: "${event.nombreDestino}",
-          snippet: "Distancia: $kilometros Kms.",
-        ));
+      markerId: MarkerId("final"),
+      position: event.rutaCoordenadas.last,
+      icon: markerDestino,
+      anchor: Offset(0, 1),
+    );
 
     final Map<String, Marker> newMarkers = {...state.markers!};
     newMarkers["inicio"] = markerInicio;
