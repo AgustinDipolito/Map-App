@@ -43,7 +43,7 @@ class SearchDestination extends SearchDelegate<SearchResult> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final searchResult = SearchResult(cancelo: false);
+    final searchResult = SearchResult(cancelo: false, manual: true);
 
     if (this.query.length == 0) {
       return ListView(
@@ -90,7 +90,7 @@ class SearchDestination extends SearchDelegate<SearchResult> {
 
         if (lugares.isEmpty && this.query.isNotEmpty) {
           return ListTile(
-            title: Text("No se encontraron lugares con ${this.query}"),
+            title: Text("No se encontraron lugares llamados ${this.query}"),
           );
         }
         return ListView.separated(

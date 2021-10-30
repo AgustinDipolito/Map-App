@@ -23,6 +23,8 @@ class OnCrearRutaIniciodestino extends MapaEvent {
   final List<LatLng> rutaCoordenadas;
   final double distancia;
   final double duracion;
+  final String nombreDestino;
 
-  OnCrearRutaIniciodestino(this.rutaCoordenadas, this.distancia, this.duracion);
+  OnCrearRutaIniciodestino(
+      this.rutaCoordenadas, this.distancia, this.duracion, this.nombreDestino);
 }

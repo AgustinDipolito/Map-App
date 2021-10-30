@@ -70,6 +70,7 @@ class _MapaPageState extends State<MapaPage> {
           myLocationButtonEnabled: false,
           zoomControlsEnabled: false,
           polylines: mapaBloc.state.polylines!.values.toSet(),
+          markers: mapaBloc.state.markers!.values.toSet(),
           onMapCreated: mapaBloc.initMapa, // el controller se envia automatico
           onCameraMove: (cameraPosition) {
             mapaBloc.add(OnMovioMapa(cameraPosition.target));

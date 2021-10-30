@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart' show Colors;
+import 'package:flutter/material.dart' show Colors, Offset;
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:mapas_app/helpers/helpers.dart';
 import 'package:meta/meta.dart';
 
 part 'mapa_event.dart';
@@ -106,8 +107,47 @@ class MapaBloc extends Bloc<MapaEvent, MapaState> {
     final currentPolylines = state.polylines;
     currentPolylines!["mi_ruta_destino"] = this._miRutaDestino;
 
+    //final iconIncio = await getAssetImageMarker();
+    final iconIncio = await getMarkerInicioIcon(event.duracion.toInt());
+    //final iconDestino = await getNetworkImageMarker();
+    final markerDestino =
+        await getMarkerDestinoIcon(event.distancia, event.nombreDestino);
+
+    //marcador
+    final markerInicio = new Marker(
+      markerId: MarkerId("inicio"),
+      position: event.rutaCoordenadas[0],
+      icon: iconIncio,
+      anchor: Offset(0, 1),
+      infoWindow: InfoWindow(
+          title: "Mi ubicacion",
+          snippet: "Tiempo estimado: ${(event.duracion / 60).floor()} Mins."),
+    );
+
+    double kilometros = (event.distancia / 1000);
+    kilometros = (kilometros * 100).floor().toDouble();
+    kilometros = (kilometros / 100);
+
+    final markerFinal = new Marker(
+        markerId: MarkerId("final"),
+        position: event.rutaCoordenadas.last,
+        icon: markerDestino,
+        anchor: Offset(0, 1),
+        infoWindow: InfoWindow(
+          title: "${event.nombreDestino}",
+          snippet: "Distancia: $kilometros Kms.",
+        ));
+
+    final Map<String, Marker> newMarkers = {...state.markers!};
+    newMarkers["inicio"] = markerInicio;
+    newMarkers["final"] = markerFinal;
+
+    Future.delayed(Duration(milliseconds: 300)).then(
+        (value) => _mapController!.showMarkerInfoWindow(MarkerId("destino")));
+
     yield state.copyWith(
       polylines: currentPolylines,
+      markers: newMarkers,
     );
   }
 }
