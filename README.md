@@ -1,4 +1,4 @@
-# MapApp 
+# MapApp [Spanish version]
 ## Mobile app for routes searching, based on GoogleMaps and Uber
 
 ### Features: 
@@ -9,9 +9,8 @@
 - Time & distance for routes.
 
 ### Screenshots: 
-![Screenshot_20211103-195841](https://user-images.githubusercontent.com/59627641/140232222-a82b24cc-084d-4ef9-bfb5-ae8f2fc4150f.jpg =540x1200)
-![Screenshot_20211103-200003](https://user-images.githubusercontent.com/59627641/140232227-584ace88-35a9-4380-972a-f2d1052daefd.jpg =540x1200)
-![Screenshot_20211103-195938](https://user-images.githubusercontent.com/59627641/140232228-7677710c-5238-4598-b733-d03376cae8b9.jpg | width=1200)
+<img src="https://user-images.githubusercontent.com/59627641/140232222-a82b24cc-084d-4ef9-bfb5-ae8f2fc4150f.jpg" width="360" height="800">    <img src="https://user-images.githubusercontent.com/59627641/140232227-584ace88-35a9-4380-972a-f2d1052daefd.jpg" height="800"><img src="https://user-images.githubusercontent.com/59627641/140232228-7677710c-5238-4598-b733-d03376cae8b9.jpg" width="360" height="800">
+
 
 
 ### Buttons description:
