@@ -1,4 +1,4 @@
-# MapApp [Spanish version]
+# MapApp [Spanish version 0.1]
 ## Mobile app for routes searching, based on GoogleMaps and Uber
 
 ### Features: 
