@@ -65,7 +65,7 @@ class _BuildMarcadorManual extends StatelessWidget {
                 shape: StadiumBorder(),
                 elevation: 5,
                 splashColor: Colors.black,
-                child: Text("Confirmar"),
+                child: Text("Confirm"),
                 onPressed: () {
                   this.calcularDestino(context);
                 }),

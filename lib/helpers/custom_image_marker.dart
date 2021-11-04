@@ -5,7 +5,7 @@ Future<BitmapDescriptor> getAssetImageMarker() async {
     ImageConfiguration(
       devicePixelRatio: 2.5,
     ),
-    'lib/assets/billy.jpg',
+    'lib/assets/...',
   );
 }
 

@@ -4,7 +4,7 @@ void calculandoAlerta(BuildContext context) {
   showDialog(
       context: context,
       builder: (context) => AlertDialog(
-            title: Text("Espere"),
-            content: Text("Calculando ruta..."),
+            title: Text("Please wait."),
+            content: Text("Calculating route..."),
           ));
 }

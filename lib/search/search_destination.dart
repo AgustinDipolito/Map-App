@@ -12,7 +12,7 @@ class SearchDestination extends SearchDelegate<SearchResult> {
   final LatLng proximidad;
   final List<SearchResult>? historial;
   SearchDestination(this.proximidad, this.historial)
-      : this.searchFieldLabel = "Buscar...",
+      : this.searchFieldLabel = "Search...",
         this._trafficService = new TrafficService();
 
   @override
@@ -50,7 +50,7 @@ class SearchDestination extends SearchDelegate<SearchResult> {
         children: [
           ListTile(
             leading: Icon(Icons.location_on),
-            title: Text("Ingresar ubicacion manualmente"),
+            title: Text("Set location manually"),
             onTap: () {
               this.close(context, searchResult);
             },
@@ -83,14 +83,14 @@ class SearchDestination extends SearchDelegate<SearchResult> {
       stream: this._trafficService.sugerenciasStream,
       builder: (context, AsyncSnapshot<SearchResponse> snapshot) {
         if (!snapshot.hasData) {
-          return ColEspera(texto: "Buscando...");
+          return ColEspera(texto: "Searching...");
         }
 
         final lugares = snapshot.data!.features;
 
         if (lugares.isEmpty && this.query.isNotEmpty) {
           return ListTile(
-            title: Text("No se encontraron lugares llamados ${this.query}"),
+            title: Text("No places called ${this.query}"),
           );
         }
         return ListView.separated(

@@ -46,7 +46,7 @@ class MarkerInicioPainter extends CustomPainter {
     //textos
     TextSpan textSpan = new TextSpan(
       style: TextStyle(
-          color: Colors.white, fontSize: 30, fontWeight: FontWeight.w400),
+          color: Colors.white, fontSize: 36, fontWeight: FontWeight.w400),
       text: "$minutos",
     );
 
@@ -58,7 +58,7 @@ class MarkerInicioPainter extends CustomPainter {
         maxWidth: 70,
         minWidth: 70,
       );
-    textPainter.paint(canvas, Offset(40, 35));
+    textPainter.paint(canvas, Offset(40, 30));
 
     textSpan = new TextSpan(
       style: TextStyle(
@@ -80,18 +80,18 @@ class MarkerInicioPainter extends CustomPainter {
     //ubicacion
     textSpan = new TextSpan(
       style: TextStyle(
-          color: Colors.black, fontSize: 23, fontWeight: FontWeight.w400),
-      text: "Mi ubicacion",
+          color: Colors.black, fontSize: 28, fontWeight: FontWeight.w400),
+      text: "My location.",
     );
 
     textPainter = new TextPainter(
       text: textSpan,
       textDirection: TextDirection.ltr,
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.left,
     )..layout(
-        maxWidth: size.width - 130,
+        maxWidth: size.width - 110,
       );
 
-    textPainter.paint(canvas, Offset(160, 50));
+    textPainter.paint(canvas, Offset(115, 40));
   }
 }

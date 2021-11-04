@@ -19,7 +19,7 @@ Future<BitmapDescriptor> getMarkerDestinoIcon(
     double metros, String descripcion) async {
   final recorder = new ui.PictureRecorder();
   final canvas = new ui.Canvas(recorder);
-  final size = new ui.Size(300, 150);
+  final size = new ui.Size(320, 150);
 
   final markerDestino = new MarkerDestinoPainter(metros, descripcion);
   markerDestino.paint(canvas, size);

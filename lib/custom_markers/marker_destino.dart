@@ -45,11 +45,11 @@ class MarkerDestinoPainter extends CustomPainter {
 
     //textos
     double kilometros = this.metros / 1000;
-    kilometros = (kilometros * 100).floor().toDouble();
-    kilometros = kilometros / 100;
+    kilometros = (kilometros * 10).floor().toDouble();
+    kilometros = (kilometros / 10);
     TextSpan textSpan = new TextSpan(
       style: TextStyle(
-          color: Colors.white, fontSize: 24, fontWeight: FontWeight.w400),
+          color: Colors.white, fontSize: 30, fontWeight: FontWeight.w400),
       text: "$kilometros",
     );
 
@@ -75,12 +75,12 @@ class MarkerDestinoPainter extends CustomPainter {
       textAlign: TextAlign.center,
     )..layout(maxWidth: 70);
 
-    textPainter.paint(canvas, Offset(10, 65));
+    textPainter.paint(canvas, Offset(20, 70));
 
     //ubicacion
     textSpan = new TextSpan(
       style: TextStyle(
-          color: Colors.black, fontSize: 20, fontWeight: FontWeight.w400),
+          color: Colors.black, fontSize: 24, fontWeight: FontWeight.w400),
       text: this.descripcion,
     );
 
@@ -90,8 +90,8 @@ class MarkerDestinoPainter extends CustomPainter {
       textAlign: TextAlign.left,
       maxLines: 2,
       ellipsis: "...",
-    )..layout(maxWidth: size.width - 100);
+    )..layout(maxWidth: size.width - 80);
 
-    textPainter.paint(canvas, Offset(90, 35));
+    textPainter.paint(canvas, Offset(80, 35));
   }
 }

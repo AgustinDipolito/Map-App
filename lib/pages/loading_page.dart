@@ -48,7 +48,7 @@ class _LoadingPageState extends State<LoadingPage> with WidgetsBindingObserver {
                   Text("${snapshot.data}"),
                   MaterialButton(
                     child: Text(
-                      "Refrescar",
+                      "Refresh.",
                       style: TextStyle(color: Colors.white),
                     ),
                     color: Colors.black,
@@ -61,7 +61,7 @@ class _LoadingPageState extends State<LoadingPage> with WidgetsBindingObserver {
               ),
             );
           } else {
-            return ColEspera(texto: "Un momento");
+            return ColEspera(texto: "Please wait.");
           }
         },
       ),
@@ -83,10 +83,10 @@ class _LoadingPageState extends State<LoadingPage> with WidgetsBindingObserver {
     else if (!permisoGps) {
       Navigator.pushReplacement(
           context, navegarMapaFadeIn(context, AccesoGpsPage()));
-      return "Es necesario el permiso de GPS";
+      return "GPS permission is required";
     }
     //gps desactivado
     else
-      return "Active el GPS";
+      return "Please activate GPS.";
   }
 }

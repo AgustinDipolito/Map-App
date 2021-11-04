@@ -140,9 +140,6 @@ class MapaBloc extends Bloc<MapaEvent, MapaState> {
     newMarkers["inicio"] = markerInicio;
     newMarkers["final"] = markerFinal;
 
-    Future.delayed(Duration(milliseconds: 300)).then(
-        (value) => _mapController!.showMarkerInfoWindow(MarkerId("destino")));
-
     yield state.copyWith(
       polylines: currentPolylines,
       markers: newMarkers,

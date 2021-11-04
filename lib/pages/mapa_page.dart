@@ -48,7 +48,7 @@ class _MapaPageState extends State<MapaPage> {
 
   Widget crearMapa(MiUbicacionState state) {
     //estado de carga
-    if (!state.existeUbicacion!) return ColEspera(texto: "Ubicando...");
+    if (!state.existeUbicacion!) return ColEspera(texto: "Searching...");
 
     final mapaBloc = BlocProvider.of<MapaBloc>(context);
 

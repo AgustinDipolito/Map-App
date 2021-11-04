@@ -49,7 +49,7 @@ class SearchBar extends StatelessWidget {
               ],
             ),
             child: Text(
-              "Buscar...",
+              "Search...",
               style: TextStyle(
                 color: Colors.black,
                 fontStyle: FontStyle.italic,
